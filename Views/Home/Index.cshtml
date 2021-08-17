@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model GreetingsInCSharp.Models.GreetingsModel;
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Enter your name, then select a language, and be greeted.</p>
+    <br>
+    <form action="/" method="POST">
+        <label>Name:</label>
+        <input type="text" name="nameVal" placeholder="Enter here">
+        <label>Count:<span>@Html.DisplayFor(model => model.count)</span></label>
+        <br>
+        <br>
+        <label>Portuguese <input type="radio" value="Portuguese" name="languageVal"></label>
+        <label>Swedish <input type="radio" value="Swedish" name="languageVal"></label>
+        <label>Japanese <input type="radio" value="Japanese" name="languageVal"></label>
+        <br>
+        <br>
+        <button class="btn btn-primary" type="submit">Greet Me</button>
+        <button class="btn btn-danger" type="button">Clear Greets</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <h3 class="display-4">@Html.DisplayFor(model => model.theGreeting)</h3>
+
+
+</div>
