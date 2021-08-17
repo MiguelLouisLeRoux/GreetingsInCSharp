@@ -31,7 +31,6 @@ namespace GreetingsInCSharp.Controllers
         [HttpPost]
         public IActionResult Index(string nameVal, string languageVal)
         {
-
             greet.GetNameAndLanguage(nameVal, languageVal);
             greet.GreetName();
 
