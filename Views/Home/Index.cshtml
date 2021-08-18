@@ -6,13 +6,16 @@
 
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Enter your name, then select a language, and be greeted.</p>
+    <br>
+    <br>
+    <h4 class="h4" >Enter a name, select a language, and have a  greet.</h4>
+    <br>
+    <p class="text-danger">@Html.DisplayFor(Model => GreetingsModel.exception)</p>
     <br>
     <form action="/" method="POST">
         <label>Name:</label>
         <input type="text" name="nameVal" placeholder="Enter here">
-        <label>Count:<span>@Html.DisplayFor(model => model.count)</span></label>
+        <label>Count:<span>@Html.DisplayFor(model => GreetingsModel.count)</span></label>
         <br>
         <br>
         <label>Portuguese <input type="radio" value="Portuguese" name="languageVal"></label>
@@ -21,12 +24,13 @@
         <br>
         <br>
         <button class="btn btn-primary" type="submit">Greet Me</button>
-        <a href="/"><button class="btn btn-danger" type="button">Clear Greets</button></a> 
+        <a href="/" ><button class="btn btn-danger" type="button">Clear Greets</button></a>
     </form>
+
     <br>
     <br>
     <br>
-    <h3 class="display-4">@Html.DisplayFor(model => model.theGreeting)</h3>
+    <h3 class="display-4">@Html.DisplayFor(model => GreetingsModel.theGreeting)</h3>
 
 
 </div>

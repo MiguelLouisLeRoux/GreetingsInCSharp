@@ -31,18 +31,16 @@ namespace GreetingsInCSharp.Controllers
         [HttpPost]
         public IActionResult Index(string nameVal, string languageVal)
         {
-            greet.GetNameAndLanguage(nameVal, languageVal);
-            greet.GreetName();
 
-            Console.WriteLine(greet.theGreeting);
-            Console.WriteLine(greet.count);
+            GreetingsModel.GetNameAndLanguage(nameVal, languageVal);
+            GreetingsModel.GreetName();
 
             return View(greet);
         }
 
         public IActionResult Greeted()
         {
-            return View();
+            return View(greet);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

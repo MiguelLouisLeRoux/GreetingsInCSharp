@@ -2,8 +2,25 @@
     ViewData["Title"] = "Names Greeted";
 }
 
+@model GreetingsInCSharp.Models.GreetingsModel;
+
 <div class="text-center">
     <h1 class="display-4"> @ViewData["Title"]</h1>
+    <table class="table table-primary table-striped table-hover">
+        <br>
+        <br>
+        <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Action</th>
+        </tr>
+        @foreach (var item in GreetingsModel.namesList)
+        {
+            <tr class="table-primary">
+                <td scope="col">@Html.DisplayFor(Model => item.Key)</td>
+                <td scope="col"><button class="btn btn-danger btn-sm">Remove</button></td>
+            </tr>
+        }
+    </table>
 </div>
 
 
