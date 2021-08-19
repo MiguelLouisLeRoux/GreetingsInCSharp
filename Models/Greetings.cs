@@ -16,46 +16,81 @@ namespace GreetingsInCSharp.Models
         public static string theGreeting {get; set;}
         public static void GetNameAndLanguage(string theName, string theLanguage)
         {
-            try
+            if (string.IsNullOrEmpty(theName) && string.IsNullOrEmpty(theLanguage))
             {
-                nameVal = theName.Trim();
+                exception = "Enter a name, then select a language.";
+                nameVal = "";
+                language = "";
+                theGreeting = "";
+            }
+            else if (string.IsNullOrEmpty(theLanguage) && !string.IsNullOrEmpty(theName))
+            {
+                exception = "Select a language";
+                nameVal = "";
+                language = "";
+                theGreeting = "";
+            }
+            else if (string.IsNullOrEmpty(theName) && !string.IsNullOrEmpty(theLanguage))
+            {
+                exception = "Enter a name.";
+                nameVal = "";
+                language = "";
+                theGreeting = "";
+            }
+            else if (!string.IsNullOrEmpty(theName) && !string.IsNullOrEmpty(theLanguage))
+            {
+                string upName = char.ToUpper(theName[0]) + theName.Substring(1);
+                nameVal = upName.Trim();
                 language = theLanguage;
+                exception = "";
             }
-            catch (Exception e)
-            {
-                exception = e.Message; 
-            
-            }
-            
-
         }
 
         public static void GreetName()
         {
+            if (!string.IsNullOrWhiteSpace(nameVal))
+            {
+                if (!namesList.ContainsKey(nameVal))
+                {
+                    namesList.Add(nameVal, 0);
+                }
+                else if (namesList.ContainsKey(nameVal))
+                {
+                    namesList[nameVal] += 1;
+                }
 
-            if (!namesList.ContainsKey(nameVal))
-            {
-                namesList.Add(nameVal, 0);
-            }
-            else if (namesList.ContainsKey(nameVal))
-            {
-                namesList[nameVal] += 1;
-            }
-
-            if (language == "Portuguese")
-            {
-                theGreeting = $"Olá {nameVal}!";
-            }
-            else if (language == "Swedish")
-            {
-                theGreeting = $"Hej {nameVal}!";
-            }
-            else if (language == "Japanese")
-            {
-                theGreeting = $"こんにちは {nameVal}!";
+                if (language == "Portuguese")
+                {
+                    theGreeting = $"Olá {nameVal}!";
+                }
+                else if (language == "Swedish")
+                {
+                    theGreeting = $"Hej {nameVal}!";
+                }
+                else if (language == "Japanese")
+                {
+                    theGreeting = $"こんにちは {nameVal}!";
+                }
             }
 
             count = namesList.Count;
+        }
+
+        public static void ClearMessages()
+        {
+            exception = "";
+            theGreeting = "";
+            nameVal = "";
+        }
+
+        public static void ClearGreets()
+        {
+            count = 0;
+            namesList.Clear();
+            exception = "";
+            theGreeting = "";
+            nameVal = "";
+            language = "";
         }
     } 
 }

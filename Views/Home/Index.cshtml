@@ -10,8 +10,7 @@
     <br>
     <h4 class="h4" >Enter a name, select a language, and have a  greet.</h4>
     <br>
-    <p class="text-danger">@Html.DisplayFor(Model => GreetingsModel.exception)</p>
-    <br>
+    <p id="theError" class="text-danger">@Html.DisplayFor(Model => GreetingsModel.exception)</p>
     <form action="/" method="POST">
         <label>Name:</label>
         <input type="text" name="nameVal" placeholder="Enter here">
@@ -24,13 +23,12 @@
         <br>
         <br>
         <button class="btn btn-primary" type="submit">Greet Me</button>
-        <a href="/" ><button class="btn btn-danger" type="button">Clear Greets</button></a>
+        <a asp-controller="home" asp-action="ClearGreets"><button class="btn btn-danger" type="button">Clear Greets</button></a>
     </form>
-
     <br>
     <br>
     <br>
-    <h3 class="display-4">@Html.DisplayFor(model => GreetingsModel.theGreeting)</h3>
+    <h3 id="theGreet" class="display-4">@Html.DisplayFor(model => GreetingsModel.theGreeting)</h3>
 
 
 </div>

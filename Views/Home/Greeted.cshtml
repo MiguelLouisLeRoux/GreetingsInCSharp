@@ -15,8 +15,8 @@
         </tr>
         @foreach (var item in GreetingsModel.namesList)
         {
-            <tr class="table-primary">
-                <td scope="col">@Html.DisplayFor(Model => item.Key)</td>
+            <tr class="table-secondary">
+                <td scope="col"><a asp-controller="Home" asp-action="GreetsCount">@Html.DisplayFor(Model => item.Key)</a></td>
                 <td scope="col"><button class="btn btn-danger btn-sm">Remove</button></td>
             </tr>
         }

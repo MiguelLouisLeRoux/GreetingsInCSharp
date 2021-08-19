@@ -23,7 +23,8 @@ namespace GreetingsInCSharp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-    
+            GreetingsModel.ClearMessages();
+
             return View(greet);
         }
 
@@ -31,7 +32,6 @@ namespace GreetingsInCSharp.Controllers
         [HttpPost]
         public IActionResult Index(string nameVal, string languageVal)
         {
-
             GreetingsModel.GetNameAndLanguage(nameVal, languageVal);
             GreetingsModel.GreetName();
 
@@ -39,8 +39,20 @@ namespace GreetingsInCSharp.Controllers
         }
 
         public IActionResult Greeted()
-        {
+        {   
             return View(greet);
+        }
+
+        public IActionResult GreetsCount()
+        { 
+            return View(greet);
+        }
+
+        public IActionResult ClearGreets()
+        { 
+            GreetingsModel.ClearGreets();
+            
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
