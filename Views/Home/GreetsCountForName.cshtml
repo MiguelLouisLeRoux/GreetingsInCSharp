@@ -5,7 +5,23 @@
 @model GreetingsInCSharp.Models.GreetingsModel;
 
 <div class="text-center">
+    <h1 class="display-4">@Html.DisplayFor(model => GreetingsModel.selectedName)</h1>
+    <h3 class="display-6">Total Greets: @Html.DisplayFor(model => GreetingsModel.selectedNameGreetCount)</h3>
     <br>
-    <br>
-    <h1 class="display-4">@Html.DisplayFor(model => GreetingsModel.selectedName) has been greeted a total of @Html.DisplayFor(model => GreetingsModel.selectedNameGreetCount)</h1>
+    <table class="table table-secondary table-striped table-hover">
+        <tr>
+        <th scope="col">Language Selected</th>
+        <th scope="col">Time</th>
+        </tr>
+        @foreach (var item in GreetingsModel.SelectedNamesData)
+        {
+            @if (item.theName == GreetingsModel.selectedName)
+            {
+                <tr class="table-primary">
+                    <td scope="col">@Html.DisplayFor(Model => item.language)</td>
+                    <td scope="col">@Html.DisplayFor(Model => item.theTime)</td>
+                </tr>
+            }   
+        }
+    </table>
 </div>

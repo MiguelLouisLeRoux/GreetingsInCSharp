@@ -18,6 +18,9 @@ namespace GreetingsInCSharp.Models
         public static string selectedName {get; set;}
 
         public static int selectedNameGreetCount {get; set;}
+
+        public static List<SelectedNameDataModel> SelectedNamesData = new List<SelectedNameDataModel>();
+
         public void GetNameAndLanguage(string theName, string theLanguage)
         {
             if (string.IsNullOrEmpty(theName) && string.IsNullOrEmpty(theLanguage))
@@ -78,6 +81,11 @@ namespace GreetingsInCSharp.Models
             }
 
             count = namesList.Count;
+
+            DateTime theGreetTime = DateTime.Now;
+            theGreetTime.ToString();
+            SelectedNameDataModel greetData = new SelectedNameDataModel(nameVal, language, theGreetTime);
+            SelectedNamesData.Add(greetData);
         }
 
         public void SetSellectedNameValues(string theSelectedName)
@@ -97,6 +105,7 @@ namespace GreetingsInCSharp.Models
         {
             count = 0;
             namesList.Clear();
+            SelectedNamesData.Clear();
             exception = "";
             theGreeting = "";
             nameVal = "";
@@ -105,11 +114,20 @@ namespace GreetingsInCSharp.Models
 
         public void RemoveName(string theNameValue)
         {
+            for(int i = 0; i < SelectedNamesData.Count; i++)
+            {
+                var item = SelectedNamesData[i];
+                if(item.theName == theNameValue)
+                {
+                    SelectedNamesData.RemoveAt(i);
+                }
+            }
+
             if(namesList.ContainsKey(theNameValue))
             {
                 namesList.Remove(theNameValue);
                 count = namesList.Count;
             }
         }
-    } 
+    }
 }
