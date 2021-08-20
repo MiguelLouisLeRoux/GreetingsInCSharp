@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Names Greeted";
+}
+
+@model GreetingsInCSharp.Models.GreetingsModel;
+
+<div class="text-center">
+    <br>
+    <br>
+    <h1 class="display-4">@Html.DisplayFor(model => GreetingsModel.selectedName) has been greeted a total of @Html.DisplayFor(model => GreetingsModel.selectedNameGreetCount)</h1>
+</div>

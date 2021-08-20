@@ -14,7 +14,11 @@ namespace GreetingsInCSharp.Models
         public static string exception {get; set;}
 
         public static string theGreeting {get; set;}
-        public static void GetNameAndLanguage(string theName, string theLanguage)
+
+        public static string selectedName {get; set;}
+
+        public static int selectedNameGreetCount {get; set;}
+        public void GetNameAndLanguage(string theName, string theLanguage)
         {
             if (string.IsNullOrEmpty(theName) && string.IsNullOrEmpty(theLanguage))
             {
@@ -46,13 +50,13 @@ namespace GreetingsInCSharp.Models
             }
         }
 
-        public static void GreetName()
+        public void GreetName()
         {
             if (!string.IsNullOrWhiteSpace(nameVal))
             {
                 if (!namesList.ContainsKey(nameVal))
                 {
-                    namesList.Add(nameVal, 0);
+                    namesList.Add(nameVal, 1);
                 }
                 else if (namesList.ContainsKey(nameVal))
                 {
@@ -76,14 +80,20 @@ namespace GreetingsInCSharp.Models
             count = namesList.Count;
         }
 
-        public static void ClearMessages()
+        public void SetSellectedNameValues(string theSelectedName)
+        {
+            selectedName = theSelectedName;
+            selectedNameGreetCount = namesList[theSelectedName];
+        }
+
+        public void ClearMessages()
         {
             exception = "";
             theGreeting = "";
             nameVal = "";
         }
 
-        public static void ClearGreets()
+        public void ClearGreets()
         {
             count = 0;
             namesList.Clear();
@@ -91,6 +101,15 @@ namespace GreetingsInCSharp.Models
             theGreeting = "";
             nameVal = "";
             language = "";
+        }
+
+        public void RemoveName(string theNameValue)
+        {
+            if(namesList.ContainsKey(theNameValue))
+            {
+                namesList.Remove(theNameValue);
+                count = namesList.Count;
+            }
         }
     } 
 }
