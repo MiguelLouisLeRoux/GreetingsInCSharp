@@ -12,6 +12,7 @@ namespace GreetingsInCSharp.Controllers
     public class HomeController : Controller
     {
         GreetingsModel greet = new GreetingsModel();
+        GreetingsMethodsModel greetMethods = new GreetingsMethodsModel();
 
         private readonly ILogger<HomeController> _logger;
 
@@ -23,7 +24,7 @@ namespace GreetingsInCSharp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            greet.ClearMessages();
+            greetMethods.ClearMessages();
             return View(greet);
         }
 
@@ -31,8 +32,8 @@ namespace GreetingsInCSharp.Controllers
         [HttpPost]
         public IActionResult Index(string nameVal, string languageVal)
         {
-            greet.GetNameAndLanguage(nameVal, languageVal);
-            greet.GreetName();
+            greetMethods.GetNameAndLanguage(nameVal, languageVal);
+            greetMethods.GreetName();
 
             return View(greet);
         }
@@ -45,14 +46,14 @@ namespace GreetingsInCSharp.Controllers
         [Route("Home/GreetedList/{id}")]
         public IActionResult GreetsCountForName(string id)
         { 
-            greet.SetSellectedNameValues(id);
+            greetMethods.SetSellectedNameValues(id);
             
             return View(greet); 
         }
 
         public IActionResult ClearGreets()
         { 
-            greet.ClearGreets();
+            greetMethods.ClearGreets();
             
             return RedirectToAction("Index");
         }
@@ -60,7 +61,7 @@ namespace GreetingsInCSharp.Controllers
         [Route("Home/GreetedList{id}")]
         public IActionResult RemoveName(string id)
         {
-            greet.RemoveName(id);
+            greetMethods.RemoveName(id);
             return Redirect("GreetedList");
         }
 

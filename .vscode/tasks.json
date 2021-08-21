@@ -8,7 +8,7 @@
             "args": [
                 "build",
                 "${workspaceFolder}/GreetingsInCSharp.csproj",
-                "/property:GenerateFullPaths=true",
+                "/property:GenerateFullPaths=true", 
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
