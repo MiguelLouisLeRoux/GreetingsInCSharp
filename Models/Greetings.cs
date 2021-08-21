@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace GreetingsInCSharp.Models
 {
@@ -23,6 +24,9 @@ namespace GreetingsInCSharp.Models
 
         public void GetNameAndLanguage(string theName, string theLanguage)
         {
+            Regex regexPattern1 = new Regex(@"[A-ZA-z]\s[A-Za-z]+$");
+            Regex regexPattern2 = new Regex(@"[A-ZA-z]+$");
+
             if (string.IsNullOrEmpty(theName) && string.IsNullOrEmpty(theLanguage))
             {
                 exception = "Enter a name, then select a language.";
@@ -44,12 +48,19 @@ namespace GreetingsInCSharp.Models
                 language = "";
                 theGreeting = "";
             }
-            else if (!string.IsNullOrEmpty(theName) && !string.IsNullOrEmpty(theLanguage))
+            else if (regexPattern1.IsMatch(theName) || regexPattern2.IsMatch(theName))
             {
                 string upName = char.ToUpper(theName[0]) + theName.Substring(1);
                 nameVal = upName.Trim();
                 language = theLanguage;
                 exception = "";
+            }
+            else
+            {
+                exception = "Special characters are not accepted.";
+                nameVal = "";
+                language = "";
+                theGreeting = "";
             }
         }
 

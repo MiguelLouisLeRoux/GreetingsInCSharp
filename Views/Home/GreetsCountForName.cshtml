@@ -8,7 +8,7 @@
     <h1 class="display-4">@Html.DisplayFor(model => GreetingsModel.selectedName)</h1>
     <h3 class="display-6">Total Greets: @Html.DisplayFor(model => GreetingsModel.selectedNameGreetCount)</h3>
     <br>
-    <table class="table table-secondary table-striped table-hover">
+    <table class="table table-primary table-striped table-hover">
         <tr>
         <th scope="col">Language Selected</th>
         <th scope="col">Time</th>
@@ -17,7 +17,7 @@
         {
             @if (item.theName == GreetingsModel.selectedName)
             {
-                <tr class="table-primary">
+                <tr class="table-secondary">
                     <td scope="col">@Html.DisplayFor(Model => item.language)</td>
                     <td scope="col">@Html.DisplayFor(Model => item.theTime)</td>
                 </tr>
