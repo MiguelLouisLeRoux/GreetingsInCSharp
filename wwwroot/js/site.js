@@ -5,16 +5,40 @@
 document.addEventListener('DOMContentLoaded', ()=>{
     const greetElem = document.getElementById("theGreet");
     const errorElem = document.getElementById("theError");
+    const successMessage = document.getElementById("successMessage");
+    const namesListSuccessMessage = document.getElementById("namesListSuccessMessage");
 
-    if (theGreet.hasChildNodes()) {
-        setTimeout(function (){
-             theGreet.innerHTML = "";
-        }, 3000);
-    };
+    if (greetElem !== null) {
+        if (greetElem.hasChildNodes()) {
+            setTimeout(function (){
+                    greetElem.innerHTML = "";
+            }, 3000);
+        };
+    }
+    
+    if (greetElem !== null) {
+        if (errorElem.hasChildNodes()) {
+            setTimeout(function (){
+                    errorElem.innerHTML = "";
+            }, 3000);
+        };
+    }
+    
+    if (greetElem !== null) {
+        if (successMessage.hasChildNodes()) {
+            setTimeout(function (){
+                successMessage.innerHTML = "";
+            }, 3000);
+        };
+    }
+    
 
-    if (theError.hasChildNodes()) {
-        setTimeout(function (){
-             theError.innerHTML = "";
-        }, 3000);
-    };
+    if (namesListSuccessMessage !== null) {
+        if (namesListSuccessMessage.hasChildNodes()) {
+            setTimeout(function (){
+                namesListSuccessMessage.innerHTML = "";
+            }, 3000);
+        };
+    }
+         
 });

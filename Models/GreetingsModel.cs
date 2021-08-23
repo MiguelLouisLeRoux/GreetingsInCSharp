@@ -8,9 +8,13 @@ namespace GreetingsInCSharp.Models
         public static string nameVal {get; set;}
 
         public static string language {get; set;}
-        public static int count {get; set;}
+        public static int count {get; set;} 
 
         public static string exception {get; set;}
+
+        public static string indexSuccessMessage {get; set;}
+
+        public static string namesListSuccessMessage {get; set;}
 
         public static string theGreeting {get; set;}
 

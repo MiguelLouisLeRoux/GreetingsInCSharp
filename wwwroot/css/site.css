@@ -62,9 +62,18 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  transition: all linear 300ms;
 }
 
 #theError {
+  height: 1rem;
+}
+
+#successMessage {
+  height: 1rem;
+}
+
+#namesListSuccessMessage {
   height: 1rem;
 }
 

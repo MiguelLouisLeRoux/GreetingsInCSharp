@@ -7,44 +7,48 @@ namespace GreetingsInCSharp.Models
     {
         public void GetNameAndLanguage(string theName, string theLanguage)
         {
+            string trimmedName = theName;
+
+            if (!string.IsNullOrEmpty(theName) && !string.IsNullOrEmpty(theLanguage))
+            {
+                trimmedName = theName.Trim();
+            }
+
+            GreetingsModel.exception = "";
+            GreetingsModel.nameVal = "";
+            GreetingsModel.language = "";
+            GreetingsModel.theGreeting = "";
+            GreetingsModel.indexSuccessMessage = "";
+            GreetingsModel.namesListSuccessMessage = "";
 
             Regex regexPattern1 = new Regex(@"[A-ZA-z]\s[A-Za-z]+$");
             Regex regexPattern2 = new Regex(@"[A-ZA-z]+$");
 
-            if (string.IsNullOrEmpty(theName) && string.IsNullOrEmpty(theLanguage))
+            if (string.IsNullOrEmpty(trimmedName) && string.IsNullOrEmpty(theLanguage))
             {
                 GreetingsModel.exception = "Enter a name, then select a language.";
-                GreetingsModel.nameVal = "";
-                GreetingsModel.language = "";
-                GreetingsModel.theGreeting = "";
+                return;
             }
-            else if (string.IsNullOrEmpty(theLanguage) && !string.IsNullOrEmpty(theName))
+            else if (string.IsNullOrEmpty(theLanguage) && !string.IsNullOrEmpty(trimmedName))
             {
                 GreetingsModel.exception = "Select a language";
-                GreetingsModel.nameVal = "";
-                GreetingsModel.language = "";
-                GreetingsModel.theGreeting = "";
+                return;
             }
-            else if (string.IsNullOrEmpty(theName) && !string.IsNullOrEmpty(theLanguage))
+            else if (string.IsNullOrEmpty(trimmedName) && !string.IsNullOrEmpty(theLanguage))
             {
                 GreetingsModel.exception = "Enter a name.";
-                GreetingsModel.nameVal = "";
-                GreetingsModel.language = "";
-                GreetingsModel.theGreeting = "";
+                return;
             }
-            else if (regexPattern1.IsMatch(theName) || regexPattern2.IsMatch(theName))
+            else if (regexPattern1.IsMatch(trimmedName) || regexPattern2.IsMatch(trimmedName))
             {
-                string upName = char.ToUpper(theName[0]) + theName.Substring(1);
-                GreetingsModel.nameVal = upName.Trim();
+                string upperName = char.ToUpper(trimmedName[0]) + trimmedName.Substring(1);
+                GreetingsModel.nameVal = upperName;
                 GreetingsModel.language = theLanguage;
-                GreetingsModel.exception = "";
+                return;
             }
             else
             {
-                GreetingsModel.exception = "Special characters are not accepted.";
-                GreetingsModel.nameVal = "";
-                GreetingsModel.language = "";
-                GreetingsModel.theGreeting = "";
+                GreetingsModel.exception = "Special characters and digits are not accepted.";
             }
         }
 
@@ -87,6 +91,7 @@ namespace GreetingsInCSharp.Models
         {
             GreetingsModel.selectedName = theSelectedName;
             GreetingsModel.selectedNameGreetCount = GreetingsModel.namesList[theSelectedName];
+            GreetingsModel.namesListSuccessMessage = "";
         }
 
         public void ClearMessages()
@@ -94,6 +99,7 @@ namespace GreetingsInCSharp.Models
             GreetingsModel.exception = "";
             GreetingsModel.theGreeting = "";
             GreetingsModel.nameVal = "";
+            GreetingsModel.namesListSuccessMessage = "";
         }
 
         public void ClearGreets()
@@ -105,6 +111,8 @@ namespace GreetingsInCSharp.Models
             GreetingsModel.theGreeting = "";
             GreetingsModel.nameVal = "";
             GreetingsModel.language = "";
+            GreetingsModel.namesListSuccessMessage = "";
+            GreetingsModel.indexSuccessMessage = "All greets succesfully cleared.";
         }
 
         public void RemoveName(string theNameValue)
@@ -114,7 +122,16 @@ namespace GreetingsInCSharp.Models
                 var item = GreetingsModel.SelectedNamesData[i];
                 if(item.theName == theNameValue)
                 {
-                    GreetingsModel.SelectedNamesData.RemoveAt(i);
+                    GreetingsModel.SelectedNamesData.Remove(item);
+                }
+            }
+
+            for(int i = 0; i < GreetingsModel.SelectedNamesData.Count; i++)
+            {
+                var item = GreetingsModel.SelectedNamesData[i];
+                if(item.theName == theNameValue)
+                {
+                    GreetingsModel.SelectedNamesData.Remove(item);
                 }
             }
 
@@ -123,6 +140,8 @@ namespace GreetingsInCSharp.Models
                 GreetingsModel.namesList.Remove(theNameValue);
                 GreetingsModel.count = GreetingsModel.namesList.Count;
             }
+
+            GreetingsModel.namesListSuccessMessage = $"{theNameValue} has been succesfully removed.";
         }
     }
 }
