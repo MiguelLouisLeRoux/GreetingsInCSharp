@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
-namespace GreetingsInCSharp.Test
+namespace GreetingsInCSharp.Models.Test
 {
     public class TotalGreetCountForParticularNameTest
     {
@@ -9,12 +10,11 @@ namespace GreetingsInCSharp.Test
         [Fact] 
         public void ShouldReturnATotalGreetCountOf4ForPete()
         {
+            var greetMethod = new GreetingsMethodsModel();
+            greetMethod.GetNameAndLanguage("Pete", "Swedish");
+            greetMethod.GreetName();
 
-        }
-
-        [Fact] 
-        public void ShouldReturnATotalGreetCountOf6ForSal()
-        {
+            Assert.Equal(2, GreetingsModel.namesList["Pete"]);
 
         }
         
