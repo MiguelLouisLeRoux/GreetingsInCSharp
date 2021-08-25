@@ -31,7 +31,7 @@ namespace GreetingsInCSharp.Models
             }
             else if (string.IsNullOrEmpty(theLanguage) && !string.IsNullOrEmpty(trimmedName))
             {
-                GreetingsModel.exception = "Select a language";
+                GreetingsModel.exception = "Select a language.";
                 return;
             }
             else if (string.IsNullOrEmpty(trimmedName) && !string.IsNullOrEmpty(theLanguage))
