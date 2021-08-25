@@ -10,6 +10,7 @@ namespace GreetingsInCSharp.Models.Test
         public void ShouldBeCountTotalOf4Greets()
         {
             var greetMethod = new GreetingsMethodsModel();
+            greetMethod.ClearGreets();
 
             greetMethod.GetNameAndLanguage("Pete", "Swedish");
             greetMethod.GreetName();
@@ -25,6 +26,7 @@ namespace GreetingsInCSharp.Models.Test
         public void ShouldNotIncrementTotalGreetsCountWhenANameHasBeenEnteredMoreThanOnce()
         {
             var greetMethod = new GreetingsMethodsModel();
+            greetMethod.ClearGreets();
 
             greetMethod.GetNameAndLanguage("Pete", "Swedish");
             greetMethod.GreetName();
@@ -36,6 +38,7 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.GreetName();
 
             Assert.Equal(3, GreetingsModel.count);
+
         }   
     }
 }

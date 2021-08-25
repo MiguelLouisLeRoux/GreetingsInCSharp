@@ -12,6 +12,7 @@ namespace GreetingsInCSharp.Models.Test
         {
 
             var greetMethod = new GreetingsMethodsModel();
+            greetMethod.ClearGreets();
 
             greetMethod.GetNameAndLanguage("Pete", "Swedish");
             greetMethod.GreetName();
@@ -20,8 +21,7 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.GetNameAndLanguage("Tess", "Japanese");
             greetMethod.GreetName();
 
-            Assert.Equal(new Dictionary<String, Int32>() {{"Pete", 3}, {"Jack", 2}, {"Tess", 3}}, GreetingsModel.namesList);
-
+            Assert.Equal(new Dictionary<String, Int32>() {{"Pete", 1}, {"Jack", 1}, {"Tess", 1}}, GreetingsModel.namesList);
         }
         
     }

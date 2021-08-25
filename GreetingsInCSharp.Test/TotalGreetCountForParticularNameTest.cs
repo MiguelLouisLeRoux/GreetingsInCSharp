@@ -11,6 +11,10 @@ namespace GreetingsInCSharp.Models.Test
         public void ShouldReturnATotalGreetCountOf4ForPete()
         {
             var greetMethod = new GreetingsMethodsModel();
+            greetMethod.ClearGreets();
+
+            greetMethod.GetNameAndLanguage("Pete", "Swedish");
+            greetMethod.GreetName();
             greetMethod.GetNameAndLanguage("Pete", "Swedish");
             greetMethod.GreetName();
 

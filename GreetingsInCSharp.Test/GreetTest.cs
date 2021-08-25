@@ -9,6 +9,7 @@ namespace GreetingsInCSharp.Models.Test
         public void ShouldBeAbleToGreetPeteInSwedish()
         {
             var greetMethod = new GreetingsMethodsModel();
+            greetMethod.ClearGreets();
 
             greetMethod.GetNameAndLanguage("Pete", "Swedish");
             greetMethod.GreetName();
@@ -23,11 +24,12 @@ namespace GreetingsInCSharp.Models.Test
 
             var greetMethod = new GreetingsMethodsModel();
 
+            greetMethod.ClearGreets();
+
             greetMethod.GetNameAndLanguage("Tess", "Portuguese");
             greetMethod.GreetName();
 
             Assert.Equal("Olá Tess!", GreetingsModel.theGreeting);
-
         }
     }
 }

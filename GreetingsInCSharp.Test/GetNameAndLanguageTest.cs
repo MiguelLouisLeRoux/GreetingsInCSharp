@@ -9,6 +9,7 @@ namespace GreetingsInCSharp.Models.Test
         public void ShouldBeAbleToGetNameTessAndLanguagePortuguese()
         {
             var greetMethod = new GreetingsMethodsModel();
+            greetMethod.ClearGreets();
 
             greetMethod.GetNameAndLanguage("Tess", "Portuguese");
 
@@ -20,6 +21,7 @@ namespace GreetingsInCSharp.Models.Test
         public void ShouldBeAbleToGetNameJackAndLanguageSwedish()
         {
             var greetMethod = new GreetingsInCSharp.Models.GreetingsMethodsModel();
+            greetMethod.ClearGreets();
 
             greetMethod.GetNameAndLanguage("Pete", "Swedish");
 
