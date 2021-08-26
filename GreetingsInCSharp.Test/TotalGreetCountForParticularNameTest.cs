@@ -19,6 +19,7 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.GreetName();
 
             Assert.Equal(2, GreetingsModel.namesList["Pete"]);
+            greetMethod.ClearGreets();
 
         }
         

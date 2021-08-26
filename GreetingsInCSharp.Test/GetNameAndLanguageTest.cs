@@ -15,6 +15,8 @@ namespace GreetingsInCSharp.Models.Test
 
             Assert.Equal("Tess", GreetingsModel.nameVal);
             Assert.Equal("Portuguese", GreetingsModel.language);
+            greetMethod.ClearGreets();
+
         }
 
         [Fact] 
@@ -27,6 +29,7 @@ namespace GreetingsInCSharp.Models.Test
 
             Assert.Equal("Pete", GreetingsModel.nameVal);
             Assert.Equal("Swedish", GreetingsModel.language);
+            greetMethod.ClearGreets();
 
         }
     }

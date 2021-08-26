@@ -15,6 +15,7 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.GreetName();
 
             Assert.Equal("Hej Pete!", GreetingsModel.theGreeting);
+            greetMethod.ClearGreets();
 
         }
 
@@ -30,6 +31,8 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.GreetName();
 
             Assert.Equal("Olá Tess!", GreetingsModel.theGreeting);
+            greetMethod.ClearGreets();
+
         }
     }
 }

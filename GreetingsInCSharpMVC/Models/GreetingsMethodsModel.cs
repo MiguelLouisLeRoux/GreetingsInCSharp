@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace GreetingsInCSharp.Models
 {
-    public class GreetingsMethodsModel
+    public class GreetingsMethodsModel : IGreetingsMethods
     {
         public void GetNameAndLanguage(string theName, string theLanguage)
         {

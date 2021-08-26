@@ -15,6 +15,8 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.GetNameAndLanguage(null, null);
 
             Assert.Equal("Enter a name, then select a language.", GreetingsModel.exception);
+            greetMethod.ClearGreets();
+
         }
 
         [Fact] 
@@ -26,6 +28,8 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.GetNameAndLanguage(null, "Swedish");
 
             Assert.Equal("Enter a name.", GreetingsModel.exception);
+            greetMethod.ClearGreets();
+
 
         }
 
@@ -38,6 +42,8 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.GetNameAndLanguage("Pete", null);
 
             Assert.Equal("Select a language.", GreetingsModel.exception);
+            greetMethod.ClearGreets();
+
 
         }
 
@@ -50,6 +56,8 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.GetNameAndLanguage("12%$@34#$5", "Swedish");
 
             Assert.Equal("Special characters and digits are not accepted.", GreetingsModel.exception);
+            greetMethod.ClearGreets();
+
         }
 
         [Fact] 
@@ -65,6 +73,8 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.ClearGreets();
 
             Assert.Equal("All greets succesfully cleared.", GreetingsModel.indexSuccessMessage);
+            greetMethod.ClearGreets();
+
 
         }
 
@@ -81,6 +91,8 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.RemoveName("Pete");
 
             Assert.Equal("Pete has been succesfully removed.", GreetingsModel.namesListSuccessMessage);
+            greetMethod.ClearGreets();
+
         }
         
     }

@@ -8,7 +8,7 @@
             "args": [
                 "build",
                 "${workspaceFolder}/GreetingsInCSharp.csproj",
-                "/property:GenerateFullPaths=true", 
+                "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
@@ -37,6 +37,62 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: debug",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "greetingsincsharp:dev",
+                "target": "base",
+                "dockerfile": "${workspaceFolder}/GreetingsInCSharpMVC/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/GreetingsInCSharpMVC/GreetingsInCSharp.csproj"
+            }
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: release",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "greetingsincsharp:latest",
+                "dockerfile": "${workspaceFolder}/GreetingsInCSharpMVC/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/GreetingsInCSharpMVC/GreetingsInCSharp.csproj"
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: debug",
+            "dependsOn": [
+                "docker-build: debug"
+            ],
+            "dockerRun": {},
+            "netCore": {
+                "appProject": "${workspaceFolder}/GreetingsInCSharpMVC/GreetingsInCSharp.csproj",
+                "enableDebugging": true
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: release",
+            "dependsOn": [
+                "docker-build: release"
+            ],
+            "dockerRun": {},
+            "netCore": {
+                "appProject": "${workspaceFolder}/GreetingsInCSharpMVC/GreetingsInCSharp.csproj"
+            }
         }
     ]
 }

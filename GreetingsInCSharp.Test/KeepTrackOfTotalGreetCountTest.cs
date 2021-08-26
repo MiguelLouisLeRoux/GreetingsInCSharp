@@ -20,6 +20,8 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.GreetName();
 
             Assert.Equal(3, GreetingsModel.count);
+            greetMethod.ClearGreets();
+
         }
 
         [Fact] 
@@ -38,6 +40,8 @@ namespace GreetingsInCSharp.Models.Test
             greetMethod.GreetName();
 
             Assert.Equal(3, GreetingsModel.count);
+            greetMethod.ClearGreets();
+
 
         }   
     }
