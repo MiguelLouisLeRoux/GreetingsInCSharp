@@ -9,39 +9,35 @@ namespace GreetingsInCSharp.Models.Test
         [Fact] 
         public void ShouldBeCountTotalOf4Greets()
         {
-            var greetMethod = new GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage("Pete", "Swedish");
-            greetMethod.GreetName();
-            greetMethod.GetNameAndLanguage("Jack", "Portuguese");
-            greetMethod.GreetName();
-            greetMethod.GetNameAndLanguage("Tess", "Japanese");
-            greetMethod.GreetName();
+            greetings.GetNameAndLanguage("Pete", "Swedish");
+            greetings.GreetName();
+            greetings.GetNameAndLanguage("Jack", "Portuguese");
+            greetings.GreetName();
+            greetings.GetNameAndLanguage("Tess", "Japanese");
+            greetings.GreetName();
 
-            Assert.Equal(3, GreetingsModel.count);
-            greetMethod.ClearGreets();
-
+            Assert.Equal(3, GreetingsModel.namesList.Count);
         }
 
         [Fact] 
         public void ShouldNotIncrementTotalGreetsCountWhenANameHasBeenEnteredMoreThanOnce()
         {
-            var greetMethod = new GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage("Pete", "Swedish");
-            greetMethod.GreetName();
-            greetMethod.GetNameAndLanguage("Jack", "Portuguese");
-            greetMethod.GreetName();
-            greetMethod.GetNameAndLanguage("Tess", "Japanese");
-            greetMethod.GreetName();
-            greetMethod.GetNameAndLanguage("Tess", "Japanese");
-            greetMethod.GreetName();
+            greetings.GetNameAndLanguage("Pete", "Swedish");
+            greetings.GreetName();
+            greetings.GetNameAndLanguage("Jack", "Portuguese");
+            greetings.GreetName();
+            greetings.GetNameAndLanguage("Tess", "Japanese");
+            greetings.GreetName();
+            greetings.GetNameAndLanguage("Tess", "Japanese");
+            greetings.GreetName();
 
-            Assert.Equal(3, GreetingsModel.count);
-            greetMethod.ClearGreets();
-
+            Assert.Equal(3, GreetingsModel.namesList.Count);
 
         }   
     }

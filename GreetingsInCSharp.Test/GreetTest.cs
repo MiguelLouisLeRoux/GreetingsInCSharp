@@ -8,14 +8,13 @@ namespace GreetingsInCSharp.Models.Test
         [Fact] 
         public void ShouldBeAbleToGreetPeteInSwedish()
         {
-            var greetMethod = new GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage("Pete", "Swedish");
-            greetMethod.GreetName();
+            greetings.GetNameAndLanguage("Pete", "Swedish");
+            greetings.GreetName();
 
-            Assert.Equal("Hej Pete!", GreetingsModel.theGreeting);
-            greetMethod.ClearGreets();
+            Assert.Equal("Hej Pete!", greetings.TheGreeting);
 
         }
 
@@ -23,15 +22,13 @@ namespace GreetingsInCSharp.Models.Test
         public void ShouldBeAbleToGreetTessInPortuguese()
         {
 
-            var greetMethod = new GreetingsMethodsModel();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.ClearGreets();
+            greetings.GetNameAndLanguage("Tess", "Portuguese");
+            greetings.GreetName();
 
-            greetMethod.GetNameAndLanguage("Tess", "Portuguese");
-            greetMethod.GreetName();
-
-            Assert.Equal("Olá Tess!", GreetingsModel.theGreeting);
-            greetMethod.ClearGreets();
+            Assert.Equal("Olá Tess!", greetings.TheGreeting);
 
         }
     }

@@ -9,90 +9,76 @@ namespace GreetingsInCSharp.Models.Test
         [Fact] 
         public void ShouldReturnEnterNameAndSelectLanguageErrorMesageWhenANameAndLanguageHasNotBeenEntered()
         {
-            var greetMethod = new GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage(null, null);
+            greetings.GetNameAndLanguage(null, null);
 
-            Assert.Equal("Enter a name, then select a language.", GreetingsModel.exception);
-            greetMethod.ClearGreets();
+            Assert.Equal("Enter a name, then select a language.", greetings.Exception);
 
         }
 
         [Fact] 
         public void ShouldReturnEnterNameErrorMesageWhenANameHasNotBeenEnteredButALanguageHasBeenSelected()
         {
-            var greetMethod = new GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage(null, "Swedish");
+            greetings.GetNameAndLanguage(null, "Swedish");
 
-            Assert.Equal("Enter a name.", GreetingsModel.exception);
-            greetMethod.ClearGreets();
-
-
+            Assert.Equal("Enter a name.", greetings.Exception);
         }
 
         [Fact] 
         public void ShouldReturnSelectLanguageErrorMesageWhenANameHasBeenEnteredButALanguageHasNotBeenSelected()
         {
-            var greetMethod = new GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage("Pete", null);
+            greetings.GetNameAndLanguage("Pete", null);
 
-            Assert.Equal("Select a language.", GreetingsModel.exception);
-            greetMethod.ClearGreets();
-
-
+            Assert.Equal("Select a language.", greetings.Exception);
         }
 
         [Fact] 
         public void ShouldReturnInvalidInputErrorMessageWhenSpecialCharacterOrDigitsAreEnteredForName()
         {
-            var greetMethod = new GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage("12%$@34#$5", "Swedish");
+            greetings.GetNameAndLanguage("12%$@34#$5", "Swedish");
 
-            Assert.Equal("Special characters and digits are not accepted.", GreetingsModel.exception);
-            greetMethod.ClearGreets();
-
+            Assert.Equal("Special characters and digits are not accepted.", greetings.Exception);
         }
 
         [Fact] 
         public void ShouldReturnSuccessMessageWhenGreetsTotalHasBeenCleared()
         {
-            var greetMethod = new GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage("Pete", "Portuguese");
-            greetMethod.GreetName();
-            greetMethod.GetNameAndLanguage("Tess", "Swedish");
-            greetMethod.GreetName();
-            greetMethod.ClearGreets();
+            greetings.GetNameAndLanguage("Pete", "Portuguese");
+            greetings.GreetName();
+            greetings.GetNameAndLanguage("Tess", "Swedish");
+            greetings.GreetName();
+            greetings.ClearGreets();
 
-            Assert.Equal("All greets succesfully cleared.", GreetingsModel.indexSuccessMessage);
-            greetMethod.ClearGreets();
-
-
+            Assert.Equal("All greets succesfully cleared.", greetings.SuccessMessage);
         }
 
         [Fact] 
         public void ShouldReturnSuccessMessageWhenANameHasBeenSuccessfullyRemovedFromGreetList()
         {
-            var greetMethod = new GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage("Pete", "Portuguese");
-            greetMethod.GreetName();
-            greetMethod.GetNameAndLanguage("Tess", "Swedish");
-            greetMethod.GreetName();
-            greetMethod.RemoveName("Pete");
+            greetings.GetNameAndLanguage("Pete", "Portuguese");
+            greetings.GreetName();
+            greetings.GetNameAndLanguage("Tess", "Swedish");
+            greetings.GreetName();
+            greetings.RemoveName("Pete");
 
-            Assert.Equal("Pete has been succesfully removed.", GreetingsModel.namesListSuccessMessage);
-            greetMethod.ClearGreets();
-
+            Assert.Equal("Pete has been succesfully removed.", greetings.SuccessMessage);
         }
         
     }

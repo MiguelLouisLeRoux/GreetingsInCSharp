@@ -8,29 +8,25 @@ namespace GreetingsInCSharp.Models.Test
         [Fact] 
         public void ShouldBeAbleToGetNameTessAndLanguagePortuguese()
         {
-            var greetMethod = new GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage("Tess", "Portuguese");
+            greetings.GetNameAndLanguage("Tess", "Portuguese");
 
-            Assert.Equal("Tess", GreetingsModel.nameVal);
-            Assert.Equal("Portuguese", GreetingsModel.language);
-            greetMethod.ClearGreets();
-
+            Assert.Equal("Tess", greetings.NameVal);
+            Assert.Equal("Portuguese", greetings.Language);
         }
 
         [Fact] 
         public void ShouldBeAbleToGetNameJackAndLanguageSwedish()
         {
-            var greetMethod = new GreetingsInCSharp.Models.GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage("Pete", "Swedish");
+            greetings.GetNameAndLanguage("Pete", "Swedish");
 
-            Assert.Equal("Pete", GreetingsModel.nameVal);
-            Assert.Equal("Swedish", GreetingsModel.language);
-            greetMethod.ClearGreets();
-
+            Assert.Equal("Pete", greetings.NameVal);
+            Assert.Equal("Swedish", greetings.Language);
         }
     }
 }

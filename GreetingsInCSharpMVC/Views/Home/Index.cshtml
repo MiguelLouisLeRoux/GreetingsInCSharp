@@ -9,12 +9,12 @@
     <br>
     <br>
     <h4 class="display-6" >Enter a name, select a language, and have a  greet.</h4>
-    <p id="successMessage" class="text-success">@Html.DisplayFor(Model => GreetingsModel.indexSuccessMessage)</p>
-    <p id="theError" class="text-danger">@Html.DisplayFor(Model => GreetingsModel.exception)</p>
+    <p id="successMessage" class="text-success">@Html.DisplayFor(model => model.SuccessMessage)</p>
+    <p id="theError" class="text-danger">@Html.DisplayFor(model => model.Exception)</p>
     <form action="/" method="POST">
         <label>Name:</label>
         <input type="text" name="nameVal" placeholder="Enter here" required>
-        <label>Count:<span>@Html.DisplayFor(model => GreetingsModel.count)</span></label>
+        <label>Count:<span>@Html.DisplayFor(model => model.count)</span></label>
         <br>
         <br>
         <label>Portuguese <input type="radio" value="Portuguese" name="languageVal"></label>
@@ -28,7 +28,5 @@
     <br>
     <br>
     <br>
-    <h3 id="theGreet" class="display-4">@Html.DisplayFor(model => GreetingsModel.theGreeting)</h3>
-
-
+    <h3 id="theGreet" class="display-4">@Html.DisplayFor(model => model.TheGreeting)</h3>
 </div>

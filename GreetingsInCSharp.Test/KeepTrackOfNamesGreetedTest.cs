@@ -12,21 +12,20 @@ namespace GreetingsInCSharp.Models.Test
         public void ShouldReturnAListOfAllNamesGreeted()
         {
 
-            var greetMethod = new GreetingsMethodsModel();
-            greetMethod.ClearGreets();
+            var greetings = new GreetingsModel();
+            greetings.ClearGreets();
 
-            greetMethod.GetNameAndLanguage("Pete", "Swedish");
-            greetMethod.GreetName();
-            greetMethod.GetNameAndLanguage("Jack", "Portuguese");
-            greetMethod.GreetName();
-            greetMethod.GetNameAndLanguage("Tess", "Japanese");
-            greetMethod.GreetName();
+            greetings.GetNameAndLanguage("Pete", "Swedish");
+            greetings.GreetName();
+            greetings.GetNameAndLanguage("Jack", "Portuguese");
+            greetings.GreetName();
+            greetings.GetNameAndLanguage("Tess", "Japanese");
+            greetings.GreetName();
 
-            var serializedExpectedList = JsonSerializer.Serialize(new Dictionary<String, Int32>() {{"Pete", 1}, {"Jack", 1}, {"Tess", 1}});
-            var serializedTestValue = JsonSerializer.Serialize(GreetingsModel.namesList);
+            // var serializedExpectedList = JsonSerializer.Serialize(new Dictionary<String, Int32>() {{"Pete", 1}, {"Jack", 1}, {"Tess", 1}});
+            // var serializedTestValue = JsonSerializer.Serialize(GreetingsModel.namesList);
             
-            Assert.Equal(serializedExpectedList, serializedTestValue);
-            greetMethod.ClearGreets();
+            Assert.Equal(new Dictionary<String, Int32>() {{"Pete", 1}, {"Jack", 1}, {"Tess", 1}}, GreetingsModel.namesList);
 
         }
         
