@@ -78,7 +78,7 @@ namespace GreetingsInCSharp.Models.Test
             greetings.GreetName();
             greetings.RemoveName("Pete");
 
-            Assert.Equal("Pete has been succesfully removed.", greetings.SuccessMessage);
+            Assert.Equal("Pete has been succesfully removed.", greetings.SecondPageSuccessMessage);
         }
         
     }
