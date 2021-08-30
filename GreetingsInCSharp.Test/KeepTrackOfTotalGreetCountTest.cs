@@ -19,7 +19,7 @@ namespace GreetingsInCSharp.Models.Test
             greetings.GetNameAndLanguage("Tess", "Japanese");
             greetings.GreetName();
 
-            Assert.Equal(3, GreetingsModel.namesList.Count);
+            Assert.Equal(3, greetings.namesList.Count);
         }
 
         [Fact] 
@@ -37,7 +37,7 @@ namespace GreetingsInCSharp.Models.Test
             greetings.GetNameAndLanguage("Tess", "Japanese");
             greetings.GreetName();
 
-            Assert.Equal(3, GreetingsModel.namesList.Count);
+            Assert.Equal(3, greetings.namesList.Count);
 
         }   
     }

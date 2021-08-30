@@ -6,14 +6,15 @@ namespace GreetingsInCSharp.Models
 {
     public class GreetingsModel
     {
-        public static Dictionary<string, int> namesList = new Dictionary<string, int>();
+        public Dictionary<string, int> namesList = new Dictionary<string, int>();
 
-        public static List<SelectedNameDataModel> SelectedNamesData = new List<SelectedNameDataModel>();  
+        public List<SelectedNameDataModel> SelectedNamesData = new List<SelectedNameDataModel>();  
 
         public string NameVal {get; set;}
 
         public string Language {get; set;}
-        public int count = namesList.Count; 
+
+        public int count {get; set;}
 
         public string Exception {get; set;}
 
@@ -73,11 +74,6 @@ namespace GreetingsInCSharp.Models
 
         public void GreetName()
         {
-            DateTime theGreetTime = DateTime.Now;
-            theGreetTime.ToString();
-            SelectedNameDataModel greetData = new SelectedNameDataModel(NameVal, Language, theGreetTime);
-            SelectedNamesData.Add(greetData);
-
             if (!namesList.ContainsKey(NameVal))
             {
                 namesList.Add(NameVal, 1);
@@ -99,6 +95,13 @@ namespace GreetingsInCSharp.Models
             {
                 TheGreeting = $"こんにちは {NameVal}!";
             }
+
+            count = namesList.Count;
+
+            DateTime theGreetTime = DateTime.Now;
+            theGreetTime.ToString();
+            SelectedNameDataModel greetData = new SelectedNameDataModel(NameVal, Language, theGreetTime);
+            SelectedNamesData.Add(greetData);
         }
 
         public void SetSellectedNameValues(string theSelectedName)
