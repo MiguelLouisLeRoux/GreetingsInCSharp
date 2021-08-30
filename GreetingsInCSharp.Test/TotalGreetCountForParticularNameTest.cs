@@ -18,7 +18,7 @@ namespace GreetingsInCSharp.Models.Test
             greetings.GetNameAndLanguage("Pete", "Swedish");
             greetings.GreetName();
 
-            Assert.Equal(2, greetings.namesList["Pete"]);
+            Assert.Equal(2, greetings.GetNamesList["Pete"]);
         }
         
     }

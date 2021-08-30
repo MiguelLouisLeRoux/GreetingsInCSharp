@@ -4,11 +4,11 @@ using System.Text.RegularExpressions;
 
 namespace GreetingsInCSharp.Models
 {
-    public class GreetingsModel
+    public class GreetingsModel : IGreetings
     {
-        public Dictionary<string, int> namesList = new Dictionary<string, int>();
+        private Dictionary<string, int> namesList = new Dictionary<string, int>();
 
-        public List<SelectedNameDataModel> SelectedNamesData = new List<SelectedNameDataModel>();  
+        private List<SelectedNameDataModel> SelectedNamesData = new List<SelectedNameDataModel>();  
 
         public string NameVal {get; set;}
 
@@ -20,11 +20,27 @@ namespace GreetingsInCSharp.Models
 
         public string SuccessMessage {get; set;}
 
+        public string SecondPageSuccessMessage {get; set;}
+
         public string TheGreeting {get; set;}
 
         public string SelectedName {get; set;}
 
         public int SelectedNameGreetCount {get; set;}
+
+        public Dictionary<string, int> GetNamesList
+        {
+            get {
+                return namesList;
+            }
+        }
+
+        public List<SelectedNameDataModel> GetSelectedNamesData
+        {
+            get {
+                return SelectedNamesData;
+            }
+        }
 
         public void GetNameAndLanguage(string theName, string theLanguage)
         {
@@ -108,7 +124,7 @@ namespace GreetingsInCSharp.Models
         {
             SelectedName = theSelectedName;
             SelectedNameGreetCount = namesList[theSelectedName];
-            SuccessMessage = "";
+            SecondPageSuccessMessage = "";
         }
 
         public void ClearMessages()
@@ -116,18 +132,20 @@ namespace GreetingsInCSharp.Models
             Exception = "";
             TheGreeting = "";
             NameVal = "";
-            SuccessMessage = "";
+            SecondPageSuccessMessage = "";
         }
 
         public void ClearGreets()
         {
             namesList.Clear();
             SelectedNamesData.Clear();
+            count = namesList.Count;
             Exception = "";
             TheGreeting = "";
             NameVal = "";
             Language = "";
             SuccessMessage = "All greets succesfully cleared.";
+            SecondPageSuccessMessage = "";
         }
 
         public void RemoveName(string theNameValue)
@@ -155,7 +173,9 @@ namespace GreetingsInCSharp.Models
                 namesList.Remove(theNameValue);
             }
 
-            SuccessMessage = $"{theNameValue} has been succesfully removed.";
+            count = namesList.Count;
+
+            SecondPageSuccessMessage = $"{theNameValue} has been succesfully removed.";
         }
 
     }

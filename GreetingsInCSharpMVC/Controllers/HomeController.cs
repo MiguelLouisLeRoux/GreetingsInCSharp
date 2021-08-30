@@ -11,13 +11,14 @@ namespace GreetingsInCSharp.Controllers
 {
     public class HomeController : Controller
     {
-        GreetingsModel greet = new GreetingsModel();
+        IGreetings greet;
 
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IGreetings greet)
         {
             _logger = logger;
+            this.greet = greet;
         }
 
         [HttpGet]

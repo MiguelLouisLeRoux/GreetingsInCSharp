@@ -21,9 +21,9 @@ namespace GreetingsInCSharp.Models.Test
             greetings.GreetName();
             greetings.GetNameAndLanguage("Tess", "Japanese");
             greetings.GreetName();
-            Console.WriteLine(greetings.namesList.Count);
+            Console.WriteLine(greetings.GetNamesList.Count);
             
-            Assert.Equal(new Dictionary<String, Int32>() {{"Pete", 1}, {"Jack", 1}, {"Tess", 1}}, greetings.namesList);
+            Assert.Equal(new Dictionary<String, Int32>() {{"Pete", 1}, {"Jack", 1}, {"Tess", 1}}, greetings.GetNamesList);
 
         }
         

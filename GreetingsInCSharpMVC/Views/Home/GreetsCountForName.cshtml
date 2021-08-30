@@ -18,7 +18,7 @@
         <th scope="col">Language Selected</th>
         <th scope="col">Time</th>
         </tr>
-        @foreach (var item in Model.SelectedNamesData)
+        @foreach (var item in Model.GetSelectedNamesData)
         {
             @if (item.theName == Model.SelectedName)
             {
