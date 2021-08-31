@@ -90,34 +90,38 @@ namespace GreetingsInCSharp.Models
 
         public void GreetName()
         {
-            if (!namesList.ContainsKey(NameVal))
+            if (!string.IsNullOrEmpty(NameVal))
             {
-                namesList.Add(NameVal, 1);
-            }
-            else if (namesList.ContainsKey(NameVal))
-            {
-                namesList[NameVal] += 1;
-            }
+                if (!namesList.ContainsKey(NameVal))
+                {
+                    namesList.Add(NameVal, 1);
+                }
+                else if (namesList.ContainsKey(NameVal))
+                {
+                    namesList[NameVal] += 1;
+                }
 
-            if (Language == "Portuguese")
-            {
-                TheGreeting = $"Olá {NameVal}!";
-            }
-            else if (Language == "Swedish")
-            {
-                TheGreeting = $"Hej {NameVal}!";
-            }
-            else if (Language == "Japanese")
-            {
-                TheGreeting = $"こんにちは {NameVal}!";
-            }
+                if (Language == "Portuguese")
+                {
+                    TheGreeting = $"Olá {NameVal}!";
+                }
+                else if (Language == "Swedish")
+                {
+                    TheGreeting = $"Hej {NameVal}!";
+                }
+                else if (Language == "Japanese")
+                {
+                    TheGreeting = $"こんにちは {NameVal}!";
+                }
 
-            count = namesList.Count;
+                count = namesList.Count;
 
-            DateTime theGreetTime = DateTime.Now;
-            theGreetTime.ToString();
-            SelectedNameDataModel greetData = new SelectedNameDataModel(NameVal, Language, theGreetTime);
-            SelectedNamesData.Add(greetData);
+                DateTime theGreetTime = DateTime.Now;
+                theGreetTime.ToString();
+                SelectedNameDataModel greetData = new SelectedNameDataModel(NameVal, Language, theGreetTime);
+                SelectedNamesData.Add(greetData);
+            }
+            
         }
 
         public void SetSellectedNameValues(string theSelectedName)
