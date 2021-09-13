@@ -1,5 +1,7 @@
+using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+
 
 namespace GreetingsInCSharp
 {
@@ -16,7 +18,7 @@ namespace GreetingsInCSharp
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    // webBuilder.UseUrls("http://*:" + Environment.GetEnvironmentVariable("PORT"));
+                    webBuilder.UseUrls("http://*:" + Environment.GetEnvironmentVariable("PORT"));
                 });
     }
 }
